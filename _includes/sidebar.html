@@ -2,46 +2,46 @@
   <nav>
     <ul>
       <li>
-        <%= link_to "About", "/about", sidebar_link_options("about") %>
+        <a href="/about"{% if page.section == "about" %} class="active"{% endif %}>About</a>
       </li>
       <li>
-        <%= link_to "Documentation", "/doc", sidebar_link_options("documentation") %>
-        <ul class="<%= @section == "documentation" ? "expanded" : ""%>">
+        <a href="/doc"{% if page.section == "documentation" %} class="active"{% endif %}>Documentation</a>
+        <ul class="">
           <li>
-            <%= link_to "Reference", "/docs", sidebar_link_options("reference") %>
+            <a href="/docs"{% if page.section == "reference" %} class="active"{% endif %}>Reference</a>
           </li>
           <li>
-            <%= link_to "Book", "/book", sidebar_link_options("book") %>
+            <a href="/book"{% if page.section == "book" %} class="active"{% endif %}>Book</a>
           </li>
           <li>
-            <%= link_to "Videos", "/videos", sidebar_link_options("videos") %>
+            <a href="/videos"{% if page.section == "videos" %} class="active"{% endif %}>Videos</a>
           </li>
           <li>
-            <%= link_to "External Links", "/doc/ext", sidebar_link_options("external-links") %>
+            <a href="/doc/ext"{% if page.section == "external-links" %} class="active"{% endif %}>External Links</a>
           </li>
         </ul>
       </li>
       <li>
-        <%= link_to "Blog", "/blog", sidebar_link_options("blog") %>
+        <a href="/blog"{% if page.section == "blog" %} class="active"{% endif %}>Blog</a>
       </li>
       <li>
-        <%= link_to "Downloads", "/downloads", sidebar_link_options("downloads") %>
-        <ul class="<%= @section == "downloads" ? "expanded" : "" %>">
+        <a href="/downloads"{% if page.section == "downloads" %} class="active"{% endif %}>Downloads</a>
+        <ul class="">
           <li>
-            <%= link_to "GUI Clients", "/downloads/guis", sidebar_link_options("guis") %>
+            <a href="/downloads/guis"{% if page.section == "guis" %} class="active"{% endif %}>GUI Clients</a>
           </li>
           <li>
-            <%= link_to "Logos", "/downloads/logos", sidebar_link_options("logos") %>
+            <a href="/downloads/logos"{% if page.section == "logos" %} class="active"{% endif %}>Logos</a>
           </li>
         </ul>
       </li>
       <li>
-        <%= link_to "Community", "/community", sidebar_link_options("community") %>
+        <a href="/community"{% if page.section == "community" %} class="active"{% endif %}>Community</a>
       </li>
     </ul>
-    <% if content_for(:sidebar) %>
+    {% if page.sidebar %}
       <hr class="sidebar">
-      <%= yield :sidebar %>
-    <% end %>
+      {{ page.sidebar }}
+    {% endif %}
   </nav>
 </aside>
