@@ -2,7 +2,16 @@
 
   <a href="/"><img src="/images/logo@2x.png" width="110" height="46" alt="Git" /></a>
   <span id="tagline">
-    <%= raw random_tagline %>
+    <em>--</em><script>
+const TAGLINES = [
+  "fast-version-control",
+  "everything-is-local",
+  "distributed-even-if-your-workflow-isnt",
+  "local-branching-on-the-cheap",
+  "distributed-is-the-new-centralized"
+];
+document.writeln(TAGLINES[Math.floor(Math.random()*TAGLINES.length)]);
+</script>
   </span>
 
   <form id="search" action="/search/results">
