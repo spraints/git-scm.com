@@ -22,7 +22,7 @@ $(document).ready(function() {
     t.setAttribute('data-site-id', '4f919d1df5a1f504b3000026');
     t.src = '//secure.gaug.es/track.js';
     var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
+    //s.parentNode.insertBefore(t, s);
   })();
 });
 
