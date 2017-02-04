@@ -4,3 +4,10 @@ latest_release_date: "2017-02-02"
 
 sass:
   sass_dir: _sass
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default

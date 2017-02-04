@@ -39,9 +39,9 @@
         <a href="/community"{% if page.section == "community" %} class="active"{% endif %}>Community</a>
       </li>
     </ul>
-    {% if page.sidebar %}
+    {% if page.sidebar == "book" %}
       <hr class="sidebar">
-      {{ page.sidebar }}
+      {% include shared/book.html %}
     {% endif %}
   </nav>
 </aside>

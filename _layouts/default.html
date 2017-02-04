@@ -30,26 +30,26 @@
 <body id="{{ page.section }}">
 
   <div class="inner">
-    {% include header.html %}
+    {% include shared/header.html %}
   </div> <!-- .inner -->
 
   {% if page.is_site_root %}
-    {% include masthead.html %}
+    {% include shared/masthead.html %}
     <div id="content-wrapper">
       <div class="inner">
         {{ content }}
-        {% include footer.html %}
+        {% include shared/footer.html %}
       </div> <!-- .inner -->
     </div> <!-- #content-wrapper -->
   {% else %}
     <div class="inner">
       <div id="content-wrapper">
-        {% include sidebar.html %}
+        {% include shared/sidebar.html %}
         <div id="content">
           {{ content }}
         </div>
       </div>
-      {% include footer.html %}
+      {% include shared/footer.html %}
     </div>
   {% endif %}
 
