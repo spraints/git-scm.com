@@ -21,8 +21,8 @@ versions (thanks to the amazing work by Shawn Pearce, who also happened to have
 been the technical editor of Pro Git).  Amusingly, it has been given very little
 fanfare - the release notes for 1.6.6 state only this:
 
-  * "git fetch" over http learned a new mode that is different from the
-    traditional "dumb commit walker".
+    * "git fetch" over http learned a new mode that is different from the
+      traditional "dumb commit walker".
 
 Which is a huge understatement, given that I think this will become the
 standard Git protocol in the very near future.  I believe this because it's
@@ -40,18 +40,18 @@ the server from bare Git repositories, since it knows the layout of the repo.
 This functionality is documented fairly completely in <a href="http://progit.org/book/ch9-6.html">Chapter 9</a>.
 Conversations over this protocol used to look like this:
 
-  $ git clone https://github.com/schacon/simplegit-progit.git
-  Initialized empty Git repository in /private/tmp/simplegit-progit/.git/
-  got ca82a6dff817ec66f44342007202690a93763949
-  walk ca82a6dff817ec66f44342007202690a93763949
-  got 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
-  Getting alternates list for https://github.com/schacon/simplegit-progit.git
-  Getting pack list for https://github.com/schacon/simplegit-progit.git
-  Getting index for pack 816a9b2334da9953e530f27bcac22082a9f5b835
-  Getting pack 816a9b2334da9953e530f27bcac22082a9f5b835
-   which contains cfda3bf379e4f8dba8717dee55aab78aef7f4daf
-  walk 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
-  walk a11bef06a3f659402fe7563abf99ad00de2209e6
+    $ git clone https://github.com/schacon/simplegit-progit.git
+    Initialized empty Git repository in /private/tmp/simplegit-progit/.git/
+    got ca82a6dff817ec66f44342007202690a93763949
+    walk ca82a6dff817ec66f44342007202690a93763949
+    got 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+    Getting alternates list for https://github.com/schacon/simplegit-progit.git
+    Getting pack list for https://github.com/schacon/simplegit-progit.git
+    Getting index for pack 816a9b2334da9953e530f27bcac22082a9f5b835
+    Getting pack 816a9b2334da9953e530f27bcac22082a9f5b835
+     which contains cfda3bf379e4f8dba8717dee55aab78aef7f4daf
+    walk 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+    walk a11bef06a3f659402fe7563abf99ad00de2209e6
 
 It is a completly passive server, and if the client needs one object in a packfile
 of thousands, the server cannot pull the single object out, the client is forced
@@ -106,19 +106,19 @@ a server with an Apache 2.x webserver (it has to be Apache, currently - other
 CGI servers don't work, last I checked).  Then you add something similar to this
 to your http.conf file:
 
-  SetEnv GIT_PROJECT_ROOT /var/www/git
-  SetEnv GIT_HTTP_EXPORT_ALL
-  ScriptAlias /git/ /usr/libexec/git-core/git-http-backend/
+    SetEnv GIT_PROJECT_ROOT /var/www/git
+    SetEnv GIT_HTTP_EXPORT_ALL
+    ScriptAlias /git/ /usr/libexec/git-core/git-http-backend/
 
 Then you'll want to make writes be authenticated somehow, possibly with an Auth
 block like this:
 
-  <LocationMatch "^/git/.*/git-receive-pack$">
-          AuthType Basic
-          AuthName "Git Access"
-          Require group committers
-          ...
-  </LocationMatch>
+    <LocationMatch "^/git/.*/git-receive-pack$">
+            AuthType Basic
+            AuthName "Git Access"
+            Require group committers
+            ...
+    </LocationMatch>
 
 That is all that is really required to get this running.  Now you have a smart
 http-based Git server that can do anonymous reads and authenticated writes with

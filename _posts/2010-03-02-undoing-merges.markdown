@@ -34,10 +34,10 @@ you're collaborating with knows how to handle rewound heads, but if that's not
 an issue, this is a perfectly viable solution.  This is basically how the 'pu'
 branch is handled in the Git project itself.
 
-  $ git checkout master
-  $ git reset --hard [sha_of_C3]
-  $ git merge jk/post-checkout
-  $ git merge db/push-cleanup
+    $ git checkout master
+    $ git reset --hard [sha_of_C3]
+    $ git merge jk/post-checkout
+    $ git merge db/push-cleanup
 
 Once you rewind and remerge, you'll instead have a history that looks more
 like this:
@@ -68,10 +68,10 @@ All you have to do is specify the merge commit you want to revert and the parent
 line you want to keep.  Let's say that we want to revert the merge of the
 `jk/post-checkout` line.  We can do so like this:
 
-  $ git revert -m 1 [sha_of_C9]
-  Finished one revert.
-  [master 88edd6d] Revert "Merge branch 'jk/post-checkout'"
-   1 files changed, 0 insertions(+), 2 deletions(-)
+    $ git revert -m 1 [sha_of_C9]
+    Finished one revert.
+    [master 88edd6d] Revert "Merge branch 'jk/post-checkout'"
+     1 files changed, 0 insertions(+), 2 deletions(-)
 
 That will introduce a new commit that undoes the changes introduced by merging
 in the branch in the first place - sort of like a reverse cherry pick of all
@@ -87,8 +87,8 @@ Let's say now that you want to re-merge that work again.  If you try to merge
 it again, Git will see that the commits on that branch are in the history and
 will assume that you are mistakenly trying to merge something you already have.
 
-  $ git merge jk/post-checkout
-  Already up-to-date.
+    $ git merge jk/post-checkout
+    Already up-to-date.
 
 Oops - it did nothing at all. Even more confusing is if you went back and committed on that branch
 and then tried to merge it in, it would only introduce the changes _since_ you
@@ -100,10 +100,10 @@ Gah.  Now that's really a strange state and is likely to cause a bunch of
 conflicts or confusing errors.  What you want to do instead is revert the revert
 of the merge:
 
-  $ git revert 88edd6d
-  Finished one revert.
-  [master 268e243] Revert "Revert "Merge branch 'jk/post-checkout'""
-   1 files changed, 2 insertions(+), 0 deletions(-)
+    $ git revert 88edd6d
+    Finished one revert.
+    [master 268e243] Revert "Revert "Merge branch 'jk/post-checkout'""
+     1 files changed, 2 insertions(+), 0 deletions(-)
 
 <img src="/images/unmerge6.png">
 
@@ -111,11 +111,11 @@ Cool, so now we've basically reintroduced everything that was in the branch
 that we had reverted out before.  Now if we have more work on that branch
 in the meantime, we can just re-merge it.
 
-  $ git merge jk/post-checkout
-  Auto-merging test.txt
-  Merge made by recursive.
-   test.txt |    1 +
-   1 files changed, 1 insertions(+), 0 deletions(-)
+    $ git merge jk/post-checkout
+    Auto-merging test.txt
+    Merge made by recursive.
+     test.txt |    1 +
+     1 files changed, 1 insertions(+), 0 deletions(-)
 
 <img src="/images/unmerge7.png">
 
