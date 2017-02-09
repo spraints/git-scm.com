@@ -1,0 +1,20 @@
+---
+title: "Blog - Git"
+section: "blog"
+layout: "default"
+sidebar: "blog"
+---
+
+<div id="main" class="blog">
+  <h1>
+    {% assign post = site.posts.first %}
+    {{ post.title }}
+    {% if post.author != empty? %}
+      <small class="subheader">
+        {{ post.author }}
+      </small>
+    {% endif %}
+  </h1>
+
+  {{ post.content }}
+</div>

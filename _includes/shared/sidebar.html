@@ -42,6 +42,9 @@
     {% if page.sidebar == "book" %}
       <hr class="sidebar">
       {% include shared/book.html %}
+    {% elsif page.sidebar == "blog" %}
+      <hr class="sidebar">
+      {% include shared/sidebar_blog.html %}
     {% endif %}
   </nav>
 </aside>
