@@ -22,9 +22,6 @@
         </ul>
       </li>
       <li>
-        <a href="/blog"{% if page.section == "blog" %} class="active"{% endif %}>Blog</a>
-      </li>
-      <li>
         <a href="/downloads"{% if page.section == "downloads" %} class="active"{% endif %}>Downloads</a>
         <ul class="">
           <li>
@@ -42,9 +39,6 @@
     {% if page.sidebar == "book" %}
       <hr class="sidebar">
       {% include shared/book.html %}
-    {% elsif page.sidebar == "blog" %}
-      <hr class="sidebar">
-      {% include shared/sidebar_blog.html %}
     {% endif %}
   </nav>
 </aside>
